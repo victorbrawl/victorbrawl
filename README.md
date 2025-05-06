@@ -1,92 +1,80 @@
-<!DOCTYPE html>
+<!DOCTYPE htm<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Roblox Fan Site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ececec;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #da2a1c;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #b41f15;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .games {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-        }
-        .game {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            width: 30%;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .game img {
-            width: 100%;
-            border-radius: 5px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Tabuada com Gmail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    #resultado {
+      margin-top: 20px;
+      background: #e7ffe7;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Roblox World</h1>
-    <p>Seu portal para os melhores jogos do Roblox!</p>
-</header>
+  <h1>Tabuada Online</h1>
+  <div class="container">
+    <label for="email">Digite seu Gmail:</label>
+    <input type="email" id="email" placeholder="exemplo@gmail.com" required>
 
-<nav>
-    <a href="#">Início</a>
-    <a href="#">Jogos</a>
-    <a href="#">Comunidade</a>
-    <a href="#">Sobre</a>
-</nav>
+    <label for="numero">Escolha um número:</label>
+    <input type="number" id="numero" placeholder="Ex: 7" required>
 
-<section class="games">
-    <div class="game">
-        <img src="https://via.placeholder.com/300x150" alt="Jogo 1">
-        <h3>Brookhaven</h3>
-        <p>Viva em uma cidade cheia de aventuras com seus amigos!</p>
-    </div>
-    <div class="game">
-        <img src="https://via.placeholder.com/300x150" alt="Jogo 2">
-        <h3>Adopt Me</h3>
-        <p>Adote pets, cuide da sua casa e explore mundos mágicos.</p>
-    </div>
-    <div class="game">
-        <img src="https://via.placeholder.com/300x150" alt="Jogo 3">
-        <h3>Doors</h3>
-        <p>Encare mistérios e desafios em um hotel cheio de surpresas.</p>
-    </div>
-</section>
+    <button onclick="gerarTabuada()">Ver Tabuada</button>
 
-<footer>
-    &copy; 2025 Roblox World - Este site é apenas para fins educativos e de fãs.
-</footer>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function gerarTabuada() {
+      const email = document.getElementById('email').value;
+      const numero = parseInt(document.getElementById('numero').value);
+      const resultadoDiv = document.getElementById('resultado');
+
+      if (!email.includes('@gmail.com')) {
+        resultadoDiv.innerHTML = 'Por favor, insira um Gmail válido.';
+        return;
+      }
+
+      if (isNaN(numero)) {
+        resultadoDiv.innerHTML = 'Por favor, insira um número válido.';
+        return;
+      }
+
+      let resultado = `Olá ${email}, aqui está a tabuada do ${numero}:<br><br>`;
+      for (let i = 1; i <= 10; i++) {
+        resultado += `${numero} x ${i} = ${numero * i}<br>`;
+      }
+
+      resultadoDiv.innerHTML = resultado;
+    }
+  </script>
 
 </body>
 </html>
